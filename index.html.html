@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cairn Education Partners — Building Systems That Build Trust</title>
+<meta name="description" content="Cairn Education Partners helps districts and school leaders build continuous improvement systems that strengthen accountability from the inside out.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--green-darkest:#1b4332;--green-dark:#2d6a4f;--green-mid:#40916c;--green-light:#52b788;--warm-white:#f5f2ec;--warm-white-2:#ebe6dc;--charcoal:#1a1a2e;--text-dark:#1a1a1a;--text-body:#4a4a5a;--text-muted:#7a7a8a;--border-light:#e0dbd2}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text-dark);background:var(--warm-white);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,242,236,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.nav-top{padding:14px 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.nav-brand-text{font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;color:var(--charcoal)}
+.nav-brand-text span{color:var(--green-dark)}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-right a{font-family:'Manrope',sans-serif;font-weight:500;font-size:13px;color:var(--text-body);text-decoration:none;transition:color .2s}
+.nav-right a:hover{color:var(--green-dark)}
+.nav-cta{font-weight:700!important;color:#fff!important;background:var(--green-darkest);padding:9px 22px;border-radius:6px;transition:background .2s}
+.nav-cta:hover{background:var(--green-dark)!important}
+
+.nav-tabs{display:flex;gap:0;padding:0 40px;border-top:1px solid rgba(0,0,0,0.04)}
+.nav-tab{font-family:'Manrope',sans-serif;font-weight:600;font-size:13px;color:var(--text-muted);padding:12px 24px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;letter-spacing:.02em}
+.nav-tab:hover{color:var(--green-dark)}
+.nav-tab.active{color:var(--green-darkest);border-bottom-color:var(--green-darkest)}
+@media(max-width:768px){.nav-top{padding:12px 20px}.nav-tabs{padding:0 20px;overflow-x:auto}.nav-tab{padding:10px 16px;font-size:12px;white-space:nowrap}.nav-hide{display:none}}
+
+/* ── SHARED ── */
+.section-eyebrow{font-family:'Manrope',sans-serif;font-weight:700;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--green-dark);margin-bottom:12px}
+.section-heading{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.2;color:var(--charcoal);margin-bottom:16px}
+.section-sub{font-size:16px;color:var(--text-body);line-height:1.75;max-width:600px}
+.section-header{max-width:620px;margin-bottom:56px}
+.page{display:none}.page.active{display:block}
+
+/* ── BUTTONS ── */
+.btn-primary{font-family:'Manrope',sans-serif;font-weight:700;font-size:14px;color:#fff;background:var(--green-darkest);padding:14px 32px;border-radius:6px;text-decoration:none;transition:all .25s;border:2px solid var(--green-darkest);display:inline-block}
+.btn-primary:hover{background:var(--green-dark);border-color:var(--green-dark);transform:translateY(-1px)}
+.btn-secondary{font-family:'Manrope',sans-serif;font-weight:600;font-size:14px;color:var(--green-darkest);background:transparent;padding:14px 32px;border-radius:6px;text-decoration:none;border:2px solid var(--green-darkest);transition:all .25s;display:inline-block}
+.btn-secondary:hover{background:var(--green-darkest);color:#fff;transform:translateY(-1px)}
+.btn-cta{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--charcoal);background:var(--green-light);padding:16px 40px;border-radius:6px;text-decoration:none;display:inline-block;transition:all .25s}
+.btn-cta:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 32px rgba(82,183,136,.3)}
+.btn-cta-outline{font-family:'Manrope',sans-serif;font-weight:600;font-size:14px;color:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.2);padding:14px 32px;border-radius:6px;text-decoration:none;display:inline-block;transition:all .25s}
+.btn-cta-outline:hover{border-color:rgba(255,255,255,.5);color:#fff;transform:translateY(-1px)}
+
+/* ═══════════════════════════════════
+   HOME PAGE
+═══════════════════════════════════ */
+.home-hero{min-height:100vh;display:flex;align-items:center;padding:140px 40px 80px;position:relative;overflow:hidden}
+.home-hero::before{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:var(--green-darkest);clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%)}
+.home-hero::after{content:'';position:absolute;top:0;right:0;width:45%;height:100%;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");clip-path:polygon(15% 0,100% 0,100% 100%,0% 100%);pointer-events:none}
+.home-hero-content{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:center;position:relative;z-index:2}
+.home-hero-left{max-width:540px}
+.home-eyebrow{font-family:'Manrope',sans-serif;font-weight:700;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--green-dark);margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .2s}
+.home-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(36px,5vw,58px);line-height:1.1;letter-spacing:-.02em;color:var(--charcoal);margin-bottom:24px;opacity:0;animation:fadeUp .8s ease forwards .35s}
+.home-title em{font-style:italic;color:var(--green-dark)}
+.home-body{font-size:16px;color:var(--text-body);line-height:1.75;margin-bottom:36px;max-width:460px;opacity:0;animation:fadeUp .8s ease forwards .5s}
+.home-actions{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease forwards .65s}
+.home-hero-right{display:flex;align-items:center;justify-content:center}
+.home-cairn{opacity:0;animation:fadeUp 1s ease forwards .5s}
+@media(max-width:900px){.home-hero{padding:140px 24px 60px}.home-hero-content{grid-template-columns:1fr;gap:40px}.home-hero::before,.home-hero::after{display:none}.home-hero-right{display:none}}
+
+/* Pathway cards */
+.pathways{padding:100px 40px;max-width:1200px;margin:0 auto}
+.pathways-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;margin-top:56px}
+@media(max-width:800px){.pathways-grid{grid-template-columns:1fr}.pathways{padding:72px 24px}}
+.pathway-card{border:1px solid var(--border-light);border-radius:14px;padding:44px 36px;background:#fff;transition:all .3s;position:relative;overflow:hidden;cursor:pointer}
+.pathway-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--green-darkest),var(--green-mid));opacity:0;transition:opacity .3s}
+.pathway-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(27,67,50,.08);border-color:var(--green-mid)}
+.pathway-card:hover::before{opacity:1}
+.pathway-badge{font-family:'Manrope',sans-serif;font-weight:700;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#fff;background:var(--green-darkest);padding:5px 14px;border-radius:4px;display:inline-block;margin-bottom:20px}
+.pathway-badge.secondary{color:var(--green-dark);background:rgba(27,67,50,.07)}
+.pathway-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:22px;color:var(--charcoal);margin-bottom:10px;line-height:1.25}
+.pathway-desc{font-size:15px;color:var(--text-body);line-height:1.7;margin-bottom:20px}
+.pathway-services{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+.pathway-services li{font-size:13px;color:var(--text-muted);padding-left:16px;position:relative;line-height:1.5}
+.pathway-services li::before{content:'';position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--green-mid)}
+.pathway-link{font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;color:var(--green-darkest);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.pathway-link:hover{gap:10px}
+
+/* Philosophy */
+.philosophy{background:var(--green-darkest);padding:80px 40px;text-align:center;position:relative;overflow:hidden}
+.philosophy::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(45,106,79,.2) 0%,transparent 60%);pointer-events:none}
+.philosophy-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.philosophy q{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,32px);font-weight:500;font-style:italic;color:rgba(255,255,255,.9);line-height:1.5;display:block;quotes:none}
+.philosophy .attr{font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--green-light);margin-top:24px}
+
+/* About (home) */
+.home-about{padding:100px 40px;max-width:1200px;margin:0 auto}
+.home-about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:center;margin-top:48px}
+@media(max-width:900px){.home-about-grid{grid-template-columns:1fr;gap:40px}.home-about{padding:72px 24px}}
+.about-visual{background:var(--green-darkest);border-radius:12px;padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:300px;position:relative;overflow:hidden}
+.about-visual::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(64,145,108,.12) 0%,transparent 60%)}
+.founder-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:32px;color:#fff;position:relative;margin-top:24px}
+.founder-role{font-family:'Manrope',sans-serif;font-weight:400;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--green-light);position:relative;margin-top:8px}
+.about-text h3{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:28px;color:var(--charcoal);margin-bottom:16px;line-height:1.25}
+.about-text p{font-size:15px;color:var(--text-body);line-height:1.8;margin-bottom:16px}
+.about-text p strong{color:var(--charcoal)}
+.credentials{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.credential{font-family:'Manrope',sans-serif;font-weight:600;font-size:11px;color:var(--green-darkest);background:rgba(27,67,50,.07);padding:8px 16px;border-radius:6px}
+
+/* ═══════════════════════════════════
+   CONSULTING PAGE
+═══════════════════════════════════ */
+.consult-hero{padding:140px 40px 80px;max-width:1200px;margin:0 auto}
+@media(max-width:768px){.consult-hero{padding:120px 24px 60px}}
+.consult-hero-inner{max-width:680px}
+.consult-hero .section-heading{font-size:clamp(32px,4.5vw,48px)}
+
+.practices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:900px){.practices-grid{grid-template-columns:1fr}}
+.practice-card{background:#fff;border:1px solid var(--border-light);border-radius:12px;padding:36px 30px;transition:all .3s;position:relative;overflow:hidden}
+.practice-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green-darkest),var(--green-mid));opacity:0;transition:opacity .3s}
+.practice-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(27,67,50,.08);border-color:var(--green-mid)}
+.practice-card:hover::before{opacity:1}
+.practice-badge{font-family:'Manrope',sans-serif;font-weight:700;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green-dark);background:rgba(27,67,50,.07);padding:5px 12px;border-radius:4px;display:inline-block;margin-bottom:20px}
+.practice-badge.flagship{color:#fff;background:var(--green-darkest)}
+.practice-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:20px;color:var(--charcoal);margin-bottom:10px;line-height:1.25}
+.practice-desc{font-size:14px;color:var(--text-body);line-height:1.7;margin-bottom:20px}
+.practice-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.practice-list li{font-size:13px;color:var(--text-muted);padding-left:16px;position:relative;line-height:1.5}
+.practice-list li::before{content:'';position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--green-mid)}
+.throughline{margin-top:48px;background:var(--green-darkest);border-radius:12px;padding:36px 40px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden}
+.throughline::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(64,145,108,.15) 0%,transparent 60%)}
+.throughline-icon{flex-shrink:0;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.throughline-text{position:relative;z-index:1}
+.throughline-label{font-family:'Manrope',sans-serif;font-weight:700;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green-light);margin-bottom:6px}
+.throughline-desc{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.85);line-height:1.5}
+@media(max-width:600px){.throughline{flex-direction:column;text-align:center;padding:32px 24px}}
+
+/* Audiences */
+.audiences{background:#fff;padding:100px 40px}
+.audiences-inner{max-width:1200px;margin:0 auto}
+.audiences-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
+@media(max-width:700px){.audiences-grid{grid-template-columns:1fr}.audiences{padding:72px 24px}}
+.audience-card{border:1px solid var(--border-light);border-radius:12px;padding:36px 32px;background:var(--warm-white);transition:all .3s}
+.audience-card:hover{border-color:var(--green-mid);transform:translateY(-2px);box-shadow:0 8px 32px rgba(27,67,50,.06)}
+.audience-icon{width:44px;height:44px;border-radius:10px;background:var(--green-darkest);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.audience-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:18px;color:var(--charcoal);margin-bottom:8px}
+.audience-desc{font-size:14px;color:var(--text-body);line-height:1.7}
+.audience-examples{margin-top:16px;font-size:12px;color:var(--text-muted);font-style:italic}
+
+/* Process */
+.process{padding:100px 40px;max-width:1200px;margin:0 auto}
+@media(max-width:900px){.process{padding:72px 24px}}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:2px;background:var(--border-light)}
+@media(max-width:900px){.process-steps{grid-template-columns:1fr 1fr;gap:48px 24px}.process-steps::before{display:none}}
+@media(max-width:500px){.process-steps{grid-template-columns:1fr}}
+.step{text-align:center;position:relative}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--green-darkest);color:#fff;font-family:'Manrope',sans-serif;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;position:relative;z-index:2}
+.step-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:var(--charcoal);margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--text-muted);line-height:1.65;max-width:200px;margin:0 auto}
+
+/* Values */
+.values{padding:80px 40px;max-width:1200px;margin:0 auto}
+@media(max-width:700px){.values{padding:60px 24px}}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:48px}
+@media(max-width:700px){.values-grid{grid-template-columns:1fr;gap:32px}}
+.value-item{text-align:center}
+.value-num{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:48px;color:var(--green-mid);line-height:1;margin-bottom:12px;opacity:.4}
+.value-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:18px;color:var(--charcoal);margin-bottom:8px}
+.value-desc{font-size:14px;color:var(--text-muted);line-height:1.65;max-width:280px;margin:0 auto}
+
+/* ═══════════════════════════════════
+   RESEARCH PAGE
+═══════════════════════════════════ */
+.research-hero{padding:140px 40px 80px;max-width:1200px;margin:0 auto}
+@media(max-width:768px){.research-hero{padding:120px 24px 60px}}
+.research-hero-inner{max-width:700px}
+.research-hero .hero-label{font-family:'Manrope',sans-serif;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+.research-hero .hero-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(36px,5vw,52px);line-height:1.1;color:var(--charcoal);margin-bottom:8px}
+.research-hero .hero-title-line{font-family:'Cormorant Garamond',serif;font-weight:500;font-style:italic;font-size:clamp(18px,2.5vw,24px);color:var(--green-dark);margin-bottom:28px}
+.research-hero .hero-body{font-size:16px;color:var(--text-body);line-height:1.8;margin-bottom:24px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+.hero-tag{font-family:'Manrope',sans-serif;font-weight:600;font-size:11px;color:var(--green-darkest);background:rgba(27,67,50,.08);padding:6px 14px;border-radius:5px}
+
+/* Research focus */
+.rf{background:#fff;padding:100px 40px}
+.rf-inner{max-width:1200px;margin:0 auto}
+.rf-statement{max-width:800px;margin-bottom:64px}
+.rf-statement blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);font-weight:500;font-style:italic;color:var(--charcoal);line-height:1.5;border-left:3px solid var(--green-mid);padding-left:24px}
+.themes-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+@media(max-width:900px){.themes-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.themes-grid{grid-template-columns:1fr 1fr}.rf{padding:72px 24px}}
+.theme-card{background:var(--warm-white);border:1px solid var(--border-light);border-radius:10px;padding:28px 20px;text-align:center;transition:all .3s}
+.theme-card:hover{border-color:var(--green-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,67,50,.06)}
+.theme-icon{width:40px;height:40px;border-radius:10px;background:var(--green-darkest);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.theme-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;color:var(--charcoal);line-height:1.3}
+
+/* Bridge */
+.bridge{background:var(--green-darkest);padding:72px 40px;position:relative;overflow:hidden}
+.bridge::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(45,106,79,.2) 0%,transparent 60%)}
+.bridge-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:center;text-align:center;position:relative;z-index:1}
+.bridge-side h3{font-family:'Manrope',sans-serif;font-weight:800;font-size:18px;color:#fff;margin-bottom:8px}
+.bridge-side p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.6}
+.bridge-arrow{display:flex;flex-direction:column;align-items:center;gap:8px}
+.bridge-arrow-line{width:2px;height:40px;background:var(--green-light);opacity:.4}
+.bridge-arrow-text{font-family:'Manrope',sans-serif;font-weight:700;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--green-light);writing-mode:vertical-lr;transform:rotate(180deg)}
+@media(max-width:700px){.bridge-inner{grid-template-columns:1fr;gap:24px}.bridge-arrow{flex-direction:row}.bridge-arrow-text{writing-mode:initial;transform:none}.bridge-arrow-line{width:40px;height:2px}.bridge{padding:56px 24px}}
+
+/* Publications */
+.publications{padding:100px 40px;max-width:1200px;margin:0 auto}
+@media(max-width:700px){.publications{padding:72px 24px}}
+.pub-grid{display:flex;flex-direction:column;gap:0}
+.pub-item{padding:28px 0;border-bottom:1px solid var(--border-light);display:grid;grid-template-columns:100px 1fr;gap:24px;align-items:baseline}
+.pub-item:first-child{border-top:1px solid var(--border-light)}
+@media(max-width:560px){.pub-item{grid-template-columns:1fr;gap:4px}}
+.pub-type{font-family:'Manrope',sans-serif;font-weight:700;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green-dark);padding-top:3px}
+.pub-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:var(--charcoal);line-height:1.35;margin-bottom:4px}
+.pub-meta{font-size:13px;color:var(--text-muted);line-height:1.5}
+.pub-placeholder{font-size:13px;color:var(--text-muted);font-style:italic}
+.pub-tag{font-family:'Manrope',sans-serif;font-weight:600;font-size:10px;color:var(--green-darkest);background:rgba(27,67,50,.07);padding:3px 10px;border-radius:4px;display:inline-block;margin-top:8px;margin-right:4px}
+
+/* Speaking */
+.speaking{background:#fff;padding:100px 40px}
+.speaking-inner{max-width:1200px;margin:0 auto}
+.speaking-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+@media(max-width:900px){.speaking-grid{grid-template-columns:1fr}.speaking{padding:72px 24px}}
+.speaking-card{border:1px solid var(--border-light);border-radius:12px;padding:32px 28px;background:var(--warm-white);transition:all .3s}
+.speaking-card:hover{border-color:var(--green-mid);transform:translateY(-2px)}
+.speaking-type{font-family:'Manrope',sans-serif;font-weight:700;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green-dark);margin-bottom:14px}
+.speaking-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:17px;color:var(--charcoal);margin-bottom:8px;line-height:1.3}
+.speaking-desc{font-size:14px;color:var(--text-body);line-height:1.65}
+.speaking-placeholder{font-size:13px;color:var(--text-muted);font-style:italic;margin-top:12px}
+.speaking-topics{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
+.speaking-topic{font-family:'Manrope',sans-serif;font-weight:600;font-size:10px;color:var(--green-darkest);background:rgba(27,67,50,.07);padding:4px 10px;border-radius:4px}
+
+/* ═══════════════════════════════════
+   SHARED CTA & FOOTER
+═══════════════════════════════════ */
+.cta{background:var(--charcoal);padding:100px 40px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;bottom:-20%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(27,67,50,.25) 0%,transparent 60%)}
+.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.cta h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(28px,4vw,42px);color:#fff;line-height:1.2;margin-bottom:16px}
+.cta p{font-size:16px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:36px}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+footer{background:var(--charcoal);border-top:1px solid rgba(255,255,255,.06);padding:56px 40px 40px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px}
+@media(max-width:700px){.footer-inner{grid-template-columns:1fr;gap:32px}footer{padding:40px 24px 32px}}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.footer-logo-text{font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;color:rgba(255,255,255,.8)}
+.footer-logo-text span{color:var(--green-mid)}
+.footer-tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(255,255,255,.35);margin-bottom:20px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;transition:background .2s;text-decoration:none}
+.footer-social a:hover{background:rgba(255,255,255,.12)}
+.footer-col-title{font-family:'Manrope',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:14px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;cursor:pointer}
+.footer-links a:hover{color:var(--green-light)}
+.footer-bottom{max-width:1200px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.2)}
+.footer-location{font-size:12px;color:rgba(255,255,255,.2)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-top">
+    <a class="nav-brand" onclick="showPage('home')">
+      <svg width="24" height="24" viewBox="0 0 48 48" fill="none"><rect x="10" y="34" rx="3" width="28" height="8" fill="#40916c" opacity=".9"/><rect x="13" y="24" rx="3" width="22" height="10" fill="#2d6a4f" opacity=".95"/><rect x="16" y="15" rx="3" width="16" height="9" fill="#1b4332"/><rect x="19" y="8" rx="2.5" width="10" height="7" fill="#1b4332" opacity=".85"/></svg>
+      <div class="nav-brand-text">Cairn <span>Education Partners</span></div>
+    </a>
+    <div class="nav-right">
+      <a href="#about" class="nav-hide">About</a>
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('home')">Home</button>
+    <button class="nav-tab" onclick="showPage('consulting')">Cairn Consulting</button>
+    <button class="nav-tab" onclick="showPage('research')">Cairn Educational Research</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HOME
+═══════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+<section class="home-hero">
+  <div class="home-hero-content">
+    <div class="home-hero-left">
+      <div class="home-eyebrow">School Improvement Consulting & Research</div>
+      <h1 class="home-title">Schools improve when <em>trust</em> and <em>insight</em> work together.</h1>
+      <p class="home-body">Cairn Education Partners helps districts and school leaders build continuous improvement systems that strengthen accountability from the inside out — so every decision moves closer to what students actually need.</p>
+      <div class="home-actions">
+        <a href="#contact" class="btn-primary">Start a Conversation</a>
+        <span class="btn-secondary" onclick="showPage('consulting')" style="cursor:pointer">Explore Our Work</span>
+      </div>
+    </div>
+    <div class="home-hero-right">
+      <div class="home-cairn">
+        <svg width="220" height="280" viewBox="0 0 220 280" fill="none"><ellipse cx="110" cy="265" rx="80" ry="12" fill="rgba(255,255,255,.08)"/><rect x="20" y="210" rx="14" width="180" height="48" fill="rgba(255,255,255,.85)"/><rect x="38" y="152" rx="12" width="144" height="56" fill="rgba(255,255,255,.65)"/><rect x="56" y="100" rx="10" width="108" height="50" fill="rgba(255,255,255,.45)"/><rect x="72" y="56" rx="8" width="76" height="42" fill="rgba(255,255,255,.3)"/><rect x="86" y="22" rx="6" width="48" height="32" fill="rgba(255,255,255,.18)"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="philosophy-inner reveal"><q>A cairn is built stone by stone — each one placed with care, each one holding up the next. That's how lasting school improvement works.</q><div class="attr">The Cairn Philosophy</div></div>
+</section>
+
+<section class="pathways">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Two Paths, One Mission</div>
+    <h2 class="section-heading">Research informs practice. Practice deepens research.</h2>
+    <p class="section-sub">Cairn Education Partners operates at the intersection of applied scholarship and hands-on school improvement. Our work lives in two connected areas.</p>
+  </div>
+  <div class="pathways-grid">
+    <div class="pathway-card reveal" onclick="showPage('consulting')">
+      <div class="pathway-badge">Flagship</div>
+      <div class="pathway-title">Cairn Consulting</div>
+      <p class="pathway-desc">Hands-on consulting for districts and school leaders. We help build CI systems, strategic plans, leadership capacity, and accountability structures that hold.</p>
+      <ul class="pathway-services"><li>Continuous Improvement system design</li><li>Strategic planning and change management</li><li>Leadership coaching and development</li><li>Accountability and assessment redesign</li></ul>
+      <span class="pathway-link">Explore Cairn Consulting →</span>
+    </div>
+    <div class="pathway-card reveal rd1" onclick="showPage('research')">
+      <div class="pathway-badge secondary">Scholarship</div>
+      <div class="pathway-title">Cairn Educational Research</div>
+      <p class="pathway-desc">Applied research, writing, and speaking on CI, trust, accountability, sensemaking, and systems change in schools. Scholarship that stays connected to practice.</p>
+      <ul class="pathway-services"><li>Applied research with districts</li><li>Publications and practitioner briefs</li><li>Conference speaking and presentations</li></ul>
+      <span class="pathway-link">Explore Cairn Educational Research →</span>
+    </div>
+  </div>
+</section>
+
+<section class="home-about" id="about">
+  <div class="section-header reveal"><div class="section-eyebrow">The Founder</div><h2 class="section-heading">Practitioner first. Scholar always.</h2></div>
+  <div class="home-about-grid">
+    <div class="about-visual reveal">
+      <svg width="56" height="56" viewBox="0 0 48 48" fill="none"><rect x="10" y="34" rx="3" width="28" height="8" fill="#40916c" opacity=".9"/><rect x="13" y="24" rx="3" width="22" height="10" fill="#2d6a4f" opacity=".95"/><rect x="16" y="15" rx="3" width="16" height="9" fill="rgba(255,255,255,.8)"/><rect x="19" y="8" rx="2.5" width="10" height="7" fill="rgba(255,255,255,.6)"/></svg>
+      <div class="founder-name">Jim Ronayne</div>
+      <div class="founder-role">Founder & Principal Consultant</div>
+    </div>
+    <div class="about-text reveal">
+      <h3>The work comes from the work.</h3>
+      <p>Jim Ronayne is an education leader in Southeast Pennsylvania and a doctoral candidate whose research focuses on <strong>continuous improvement as a mechanism for trust-building and accountability in schools</strong>.</p>
+      <p>His work draws on systems change theory, sensemaking, and scholars like Anthony Bryk to bridge the gap between what research says about school improvement and what practitioners actually experience on the ground.</p>
+      <p>Cairn Education Partners grew out of a conviction that <strong>schools don't need more mandates — they need better systems.</strong> Systems that treat trust as infrastructure, data as a tool for learning (not punishment), and accountability as something built from the inside out.</p>
+      <div class="credentials"><div class="credential">Continuous Improvement</div><div class="credential">Systems Change</div><div class="credential">ESSA & Policy</div><div class="credential">Trust & Accountability</div><div class="credential">Sensemaking</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact"><div class="cta-inner reveal"><h2>Ready to build something that holds?</h2><p>Whether you're a superintendent rethinking accountability, a principal launching CI cycles, or a state agency exploring multiple measures — let's talk.</p><div class="cta-actions"><a href="mailto:jim@cairneducationpartners.com" class="btn-cta">Start a Conversation</a></div></div></section>
+</div>
+
+<!-- ═══════════════════════════════════
+     CONSULTING
+═══════════════════════════════════ -->
+<div id="page-consulting" class="page">
+
+<section class="consult-hero">
+  <div class="consult-hero-inner">
+    <div class="section-eyebrow">Cairn Consulting</div>
+    <h2 class="section-heading">Better systems for the adults. Better experiences for students.</h2>
+    <p class="section-sub">Continuous improvement is our foundation, but the work meets you where you are. Every engagement is tailored to your context — and anchored in what matters most: the experience and growth of students.</p>
+  </div>
+</section>
+
+<section style="padding:0 40px 100px;max-width:1200px;margin:0 auto">
+  <div class="practices-grid">
+    <div class="practice-card reveal"><div class="practice-badge flagship">Flagship</div><h3 class="practice-title">Continuous Improvement</h3><p class="practice-desc">We help schools and districts design, launch, and sustain CI systems that connect data to action — so improvement becomes how you work, not something added on.</p><ul class="practice-list"><li>CI system design and implementation</li><li>Improvement planning and theory of action</li><li>Data sensemaking and informed decision-making</li><li>Accountability system redesign</li></ul></div>
+    <div class="practice-card reveal rd1"><div class="practice-badge">Practice Area</div><h3 class="practice-title">Strategy & Leadership</h3><p class="practice-desc">We partner with leaders navigating complex change — helping them plan strategically, manage initiative fatigue, and build the culture conditions that make improvement possible.</p><ul class="practice-list"><li>District-wide strategic planning</li><li>Change management consulting</li><li>Leadership coaching and development</li><li>School culture and climate work</li></ul></div>
+    <div class="practice-card reveal rd2"><div class="practice-badge">Practice Area</div><h3 class="practice-title">Insight & Accountability</h3><p class="practice-desc">We help districts rethink how they measure, communicate, and act on school effectiveness — moving beyond compliance toward systems that build trust with families and communities.</p><ul class="practice-list"><li>Curriculum and assessment alignment</li><li>Data systems and dashboard design</li><li>Stakeholder engagement and communication</li><li>Policy interpretation (ESSA, state frameworks)</li></ul></div>
+  </div>
+  <div class="throughline reveal"><div class="throughline-icon"><svg width="24" height="24" viewBox="0 0 48 48" fill="none"><rect x="10" y="34" rx="3" width="28" height="8" fill="rgba(255,255,255,.7)"/><rect x="13" y="24" rx="3" width="22" height="10" fill="rgba(255,255,255,.5)"/><rect x="16" y="15" rx="3" width="16" height="9" fill="rgba(255,255,255,.8)"/><rect x="19" y="8" rx="2.5" width="10" height="7" fill="#fff"/></svg></div><div class="throughline-text"><div class="throughline-label">Across Everything We Do</div><div class="throughline-desc">Every engagement builds internal capacity. We partner with your teams so the work continues long after we leave. The cairn stands on its own.</div></div></div>
+</section>
+
+<section class="audiences"><div class="audiences-inner">
+  <div class="section-header reveal"><div class="section-eyebrow">Who We Serve</div><h2 class="section-heading">We work with people doing the hardest work in education.</h2><p class="section-sub">Whether you're leading a district, running a building, or shaping policy at the state level — if you're trying to make schools better for students, we want to help.</p></div>
+  <div class="audiences-grid">
+    <div class="audience-card reveal"><div class="audience-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div><div class="audience-title">District Central Office</div><div class="audience-desc">Superintendents, assistant superintendents, and central office teams building district-wide improvement systems, strategic plans, and accountability structures.</div><div class="audience-examples">Strategic planning, CI system design, accountability redesign, data infrastructure</div></div>
+    <div class="audience-card reveal rd1"><div class="audience-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="audience-title">Building Leadership Teams</div><div class="audience-desc">Principals, assistant principals, and school leadership teams working to build improvement cycles, strengthen culture, and lead meaningful change in their buildings.</div><div class="audience-examples">CI capacity building, leadership coaching, culture and climate, change management</div></div>
+    <div class="audience-card reveal rd2"><div class="audience-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="audience-title">State & Regional Agencies</div><div class="audience-desc">State departments of education, intermediate units, and regional service agencies shaping policy, designing frameworks, and supporting districts at scale.</div><div class="audience-examples">ESSA implementation, multiple measures, stakeholder engagement, policy interpretation</div></div>
+    <div class="audience-card reveal rd3"><div class="audience-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="audience-title">Schools in Transition</div><div class="audience-desc">Schools and districts facing critical moments — new leadership, post-pandemic recovery, declining performance, or community trust challenges — where the right systems matter most.</div><div class="audience-examples">Turnaround support, stakeholder communication, improvement planning, culture reset</div></div>
+  </div>
+</div></section>
+
+<section class="process"><div class="section-header reveal"><div class="section-eyebrow">Our Approach</div><h2 class="section-heading">Stone by stone.</h2><p class="section-sub">Every engagement follows a clear, iterative path — because improvement systems only hold when each layer is placed with intention.</p></div>
+  <div class="process-steps">
+    <div class="step reveal"><div class="step-num">1</div><div class="step-title">Listen</div><div class="step-desc">We learn your context — culture, constraints, history, and goals — before proposing anything.</div></div>
+    <div class="step reveal rd1"><div class="step-num">2</div><div class="step-title">Map</div><div class="step-desc">We identify where insight, trust, and accountability are connected — and where the gaps are.</div></div>
+    <div class="step reveal rd2"><div class="step-num">3</div><div class="step-title">Build</div><div class="step-desc">We co-design improvement systems with your team — not for you, but alongside you.</div></div>
+    <div class="step reveal rd3"><div class="step-num">4</div><div class="step-title">Sustain</div><div class="step-desc">We build internal capacity so the system holds after we leave. The cairn stands on its own.</div></div>
+  </div>
+</section>
+
+<section class="values"><div class="section-header reveal" style="text-align:center;max-width:600px;margin:0 auto"><div class="section-eyebrow">What We Believe</div><h2 class="section-heading">Three convictions that shape every engagement.</h2></div>
+  <div class="values-grid">
+    <div class="value-item reveal"><div class="value-num">01</div><div class="value-title">Trust is infrastructure.</div><div class="value-desc">Without trust between educators, leaders, families, and communities, no improvement system will hold. We build trust into the architecture.</div></div>
+    <div class="value-item reveal rd1"><div class="value-num">02</div><div class="value-title">Systems over programs.</div><div class="value-desc">Programs come and go. Systems endure. We help schools build the structures and habits that make improvement sustainable, not seasonal.</div></div>
+    <div class="value-item reveal rd2"><div class="value-num">03</div><div class="value-title">Students at the center.</div><div class="value-desc">Every system we build, every plan we design, every conversation we facilitate comes back to one question: is this making things better for students?</div></div>
+  </div>
+</section>
+
+<section class="cta"><div class="cta-inner reveal"><h2>Ready to build something that holds?</h2><p>Whether you're a superintendent rethinking accountability, a principal launching CI cycles, or a state agency exploring multiple measures — let's talk about what your schools need.</p><div class="cta-actions"><a href="mailto:jim@cairneducationpartners.com" class="btn-cta">Start a Conversation</a></div></div></section>
+</div>
+
+<!-- ═══════════════════════════════════
+     RESEARCH
+═══════════════════════════════════ -->
+<div id="page-research" class="page">
+
+<section class="research-hero">
+  <div class="research-hero-inner">
+    <div class="hero-label">Cairn Educational Research</div>
+    <h1 class="hero-name">Jim Ronayne</h1>
+    <div class="hero-title-line">Education leader. Doctoral candidate. Applied researcher.</div>
+    <p class="hero-body">My research sits at the intersection of continuous improvement, accountability, and trust in schools. I study how districts make sense of reform, how improvement systems take root, and how schools can build accountability structures that are both rigorous and humane. The work is grounded in practice — because I do this work every day.</p>
+    <div class="hero-tags"><span class="hero-tag">Continuous Improvement</span><span class="hero-tag">Sensemaking</span><span class="hero-tag">Trust & Accountability</span><span class="hero-tag">Systems Change</span><span class="hero-tag">ESSA & Policy</span></div>
+  </div>
+</section>
+
+<section class="rf">
+  <div class="rf-inner">
+    <div class="section-header reveal"><div class="section-eyebrow">Research Focus</div><h2 class="section-heading">How schools build improvement systems that actually hold.</h2></div>
+    <div class="rf-statement reveal"><blockquote>My central question is this: how can continuous improvement serve as a mechanism that bridges internal professional accountability and external public trust in schools still operating under high-stakes testing pressure?</blockquote></div>
+    <div class="themes-grid">
+      <div class="theme-card reveal"><div class="theme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="theme-name">Continuous Improvement in Schools</div></div>
+      <div class="theme-card reveal rd1"><div class="theme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="theme-name">Trust & Accountability</div></div>
+      <div class="theme-card reveal rd2"><div class="theme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="theme-name">Sensemaking & Reform</div></div>
+      <div class="theme-card reveal rd3"><div class="theme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="theme-name">Systems Change</div></div>
+      <div class="theme-card reveal rd4"><div class="theme-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div><div class="theme-name">ESSA & Policy</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="bridge"><div class="bridge-inner reveal">
+  <div class="bridge-side"><h3>Research</h3><p>Scholarship on CI, sensemaking, trust, and accountability in schools. Grounded in systems change theory and the work of Bryk, Spillane, Peurach, and others.</p></div>
+  <div class="bridge-arrow"><div class="bridge-arrow-line"></div><div class="bridge-arrow-text">Informs</div><div class="bridge-arrow-line"></div></div>
+  <div class="bridge-side"><h3>Practice</h3><p>Consulting with districts and school leaders through Cairn Consulting. Every engagement surfaces new questions. Every question deepens the research.</p></div>
+</div></section>
+
+<section class="publications"><div class="section-header reveal"><div class="section-eyebrow">Writing & Publications</div><h2 class="section-heading">Research in progress.</h2><p class="section-sub">Selected publications, working papers, and practitioner-facing writing. This section will grow as work is published.</p></div>
+  <div class="pub-grid">
+    <div class="pub-item reveal"><div class="pub-type">Dissertation</div><div class="pub-content"><div class="pub-title">[Dissertation Title — In Progress]</div><div class="pub-meta">Doctoral Dissertation (Ed.D.) — Expected 2026</div><div class="pub-placeholder">Exploring continuous improvement as a mechanism for bridging internal professional accountability and external public trust in schools operating under high-stakes testing pressure.</div><span class="pub-tag">CI</span><span class="pub-tag">Trust</span><span class="pub-tag">Accountability</span></div></div>
+    <div class="pub-item reveal"><div class="pub-type">Lit Review</div><div class="pub-content"><div class="pub-title">The Search for Something Better: High-Stakes Testing, Reform, and the Case for Continuous Improvement</div><div class="pub-meta">Working Paper — 2026</div><div class="pub-placeholder">A four-part review examining the HST accountability era, post-NCLB alternatives, and CI as an underexplored mechanism for school improvement.</div><span class="pub-tag">HST</span><span class="pub-tag">NCLB</span><span class="pub-tag">ESSA</span><span class="pub-tag">CI</span></div></div>
+    <div class="pub-item reveal"><div class="pub-type">Lit Review</div><div class="pub-content"><div class="pub-title">Sensemaking, Accountability, and School Improvement</div><div class="pub-meta">Working Paper — 2026</div><div class="pub-placeholder">A review foregrounding sensemaking as a lens for understanding how schools interpret and implement improvement and accountability frameworks.</div><span class="pub-tag">Sensemaking</span><span class="pub-tag">Accountability</span><span class="pub-tag">Reform</span></div></div>
+    <div class="pub-item reveal"><div class="pub-type">Forthcoming</div><div class="pub-content"><div class="pub-title">[Placeholder for future publication]</div><div class="pub-placeholder">Additional publications will be listed here as they are completed and accepted.</div></div></div>
+  </div>
+</section>
+
+<section class="speaking"><div class="speaking-inner">
+  <div class="section-header reveal"><div class="section-eyebrow">Speaking & Presentations</div><h2 class="section-heading">Bringing research to practitioners and practitioners to research.</h2><p class="section-sub">I speak to academic and practitioner audiences about CI, accountability, trust, and what it actually takes to improve schools.</p></div>
+  <div class="speaking-grid">
+    <div class="speaking-card reveal"><div class="speaking-type">Talk Topic</div><div class="speaking-title">Continuous Improvement as Accountability</div><div class="speaking-desc">Why CI is more than a process — it's a framework for rebuilding trust between schools and the communities they serve.</div><div class="speaking-topics"><span class="speaking-topic">CI</span><span class="speaking-topic">Trust</span><span class="speaking-topic">Accountability</span></div><div class="speaking-placeholder">Upcoming engagements will be listed here.</div></div>
+    <div class="speaking-card reveal rd1"><div class="speaking-type">Talk Topic</div><div class="speaking-title">Making Sense of Reform</div><div class="speaking-desc">How school leaders interpret, adapt, and sometimes resist improvement mandates — and what that means for policy design.</div><div class="speaking-topics"><span class="speaking-topic">Sensemaking</span><span class="speaking-topic">Reform</span><span class="speaking-topic">Policy</span></div><div class="speaking-placeholder">Upcoming engagements will be listed here.</div></div>
+    <div class="speaking-card reveal rd2"><div class="speaking-type">Talk Topic</div><div class="speaking-title">Beyond the Test Score</div><div class="speaking-desc">Rethinking what we measure, how we communicate it, and what accountability looks like in the ESSA era.</div><div class="speaking-topics"><span class="speaking-topic">ESSA</span><span class="speaking-topic">Multiple Measures</span><span class="speaking-topic">Systems</span></div><div class="speaking-placeholder">Upcoming engagements will be listed here.</div></div>
+  </div>
+</div></section>
+
+<section class="cta"><div class="cta-inner reveal"><h2>Interested in collaborating?</h2><p>I'm open to research partnerships, conference invitations, guest lectures, and practitioner-facing writing collaborations. If our interests overlap, I'd love to connect.</p><div class="cta-actions"><a href="mailto:jim@cairneducationpartners.com" class="btn-cta">Get in Touch</a><span class="btn-cta-outline" onclick="showPage('consulting')" style="cursor:pointer">Visit Cairn Consulting</span></div></div></section>
+</div>
+
+<!-- SHARED FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><svg width="20" height="20" viewBox="0 0 48 48" fill="none"><rect x="10" y="34" rx="3" width="28" height="8" fill="#40916c" opacity=".9"/><rect x="13" y="24" rx="3" width="22" height="10" fill="#2d6a4f" opacity=".95"/><rect x="16" y="15" rx="3" width="16" height="9" fill="#1b4332"/><rect x="19" y="8" rx="2.5" width="10" height="7" fill="#1b4332" opacity=".85"/></svg><div class="footer-logo-text">Cairn <span>Education Partners</span></div></div>
+      <div class="footer-tagline">Building systems that build trust.</div>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.5)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="mailto:jim@cairneducationpartners.com" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Cairn Consulting</div>
+      <ul class="footer-links"><li><a onclick="showPage('consulting')">Continuous Improvement</a></li><li><a onclick="showPage('consulting')">Strategy & Leadership</a></li><li><a onclick="showPage('consulting')">Insight & Accountability</a></li></ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Cairn Educational Research</div>
+      <ul class="footer-links"><li><a onclick="showPage('research')">Research Focus</a></li><li><a onclick="showPage('research')">Writing & Publications</a></li><li><a onclick="showPage('research')">Speaking</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">&copy; 2026 Cairn Education Partners. All rights reserved.</div><div class="footer-location">Greater Philadelphia Area</div></div>
+</footer>
+
+<script>
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  const idx = {home:0,consulting:1,research:2}[page];
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Re-observe reveals for the new page
+  setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+  }, 100);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
